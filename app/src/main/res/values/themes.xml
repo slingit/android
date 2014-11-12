@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BoopSetUpTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryDark">@color/darkOrange</item>
+        <!-- The rest of your attributes -->
+    </style>
+    <style name="Theme.BoopSetUpTheme.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">42dip</item>
+    </style>
+</resources>

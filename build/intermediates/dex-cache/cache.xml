@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-0df00eb6b012cc63cd84d555ee916abfd4d89844.jar"
+        jar="/Users/jamie/sdks/android-sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e"/>
+    <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/classes-f5413342b9d12c9f31ffa0da720dc0992f41609e.jar"
+        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="95fd37732ec852e99f07eeb516a3650172f1d136"/>
+    <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-dddd7622323d7a59b6498cc5f9b77b57048ff389.jar"
+        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0"/>
+    <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/classes-661fe84af63c3056e28530cf1b4e43cabdcc3cba.jar"
+        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6"/>
+    <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/classes-c6a65290c906903aedab0535faf9355a41566088.jar"
+        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="0c0c19759e5868604a3b4c2c0074ee9404d73c76"/>
+    <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-78d0dc247534e1aa6c5e8fecf9972d1ffd78a74f.jar"
+        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.0/libs/internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="5a8e01742aee890c56fe638ea7c921b91a3fdc62"/>
+
+</pre-dex-items>
