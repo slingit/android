@@ -5,4 +5,13 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- the "First Time" screen -->
+    <string name="title_activity_setup_first_device">First time</string>
+    <string name="setup_first_device">Welcome aboard! Scan the QR code below on another device with Boop installed, and you\'ll be on your way.</string>
+    <string name="setup_no_camera">It doesn\'t have a camera!</string>
+
+    <!-- existing group -->
+    <string name="title_activity_setup_existing_group">Welcome back</string>
+    <string name="setup_existing_group">It\’s great to see you again. To add this device to your Boop group, open the "Add device" screen on another Boop installation. Then, tap the button below!</string>
+
 </resources>

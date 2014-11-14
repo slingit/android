@@ -5,17 +5,26 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-         >
+        android:label="@string/app_name" >
         <activity
             android:name="me.boopit.boopapp.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.BoopSetUpTheme">
+            android:theme="@style/Theme.BoopSetUpTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="me.boopit.boopapp.SetupFirstDevice"
+            android:label="@string/title_activity_setup_first_device"
+            android:theme="@style/Theme.BoopSetUpTheme">
+        </activity>
+        <activity
+            android:name="me.boopit.boopapp.SetupExistingGroup"
+            android:label="@string/title_activity_setup_existing_group"
+            android:theme="@style/Theme.BoopSetUpTheme">
         </activity>
     </application>
 
