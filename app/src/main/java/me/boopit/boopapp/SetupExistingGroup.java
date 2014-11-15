@@ -3,18 +3,25 @@ package me.boopit.boopapp;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RelativeLayout;
+
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 
 public class SetupExistingGroup extends Activity {
 
     private int transitionTime = 450;
+
+    // define mScannerView
+    private ZXingScannerView mScannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,5 +73,10 @@ public class SetupExistingGroup extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void startQRScan(View v) {
+        Intent scanIntent = new Intent(this, HandleQRScan.class);
+        startActivity(scanIntent);
     }
 }

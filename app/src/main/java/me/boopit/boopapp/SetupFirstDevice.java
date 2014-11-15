@@ -8,15 +8,19 @@ import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 
 public class SetupFirstDevice extends Activity {
 
     private int transitionTime = 450;
+    private PopupWindow noCameraWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,5 +72,19 @@ public class SetupFirstDevice extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void noCamera(View v) {
+        LayoutInflater layoutInflater  = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = layoutInflater.inflate(R.layout.activity_setup_first_device_nocamera, null);
+        // launch our XKCD-tastic backup solution
+        noCameraWindow = new PopupWindow(popupView, 800, 1000, true);
+        // set the animation
+        noCameraWindow.setAnimationStyle(R.style.Theme_BoopSetUpTheme_PopUpAnimation);
+        noCameraWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+    }
+
+    public void removePopup(View v) {
+        noCameraWindow.dismiss();
     }
 }

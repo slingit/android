@@ -31,6 +31,19 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_marginBottom="0dip"/>
+
+        <Button
+            android:id="@+id/qr_scan_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/setup_text"
+            android:layout_marginLeft="64dip"
+            android:layout_marginRight="64dip"
+            android:layout_marginTop="16dip"
+            android:text="@string/setup_qr_button"
+            android:textColor="@color/white"
+            android:background="@color/green"
+            android:onClick="startQRScan"/>
     </RelativeLayout>
 
 </RelativeLayout>

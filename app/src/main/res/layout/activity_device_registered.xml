@@ -1,14 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="me.boopit.boopapp.SetupFirstDevice">
+    tools:context="me.boopit.boopapp.DeviceRegistered">
 
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/first_device_background"
+        android:background="@color/orange"
         android:minHeight="128dip"
         android:layout_centerVertical="false"
         android:gravity="bottom|left"
@@ -25,33 +25,23 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:id="@+id/relativeLayoutContent">
         <TextView
-            android:id="@+id/setup_text"
-            android:text="@string/setup_first_device"
+            android:id="@+id/registered_device_headline"
+            android:text="@string/registered_device_content"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_marginBottom="0dip"/>
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sample_qr"
-            android:layout_below="@id/setup_text"
-            android:padding="18dip"
-            android:layout_marginBottom="12dip"
-        />
 
-        <!-- it doesn't have a camera? You're SOL... for now. TODO: make this class -->
         <Button
-            android:text="@string/setup_no_camera"
+            android:text="@string/registered_next_steps"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/blue"
+            android:textColor="@color/orange"
             android:textStyle="italic"
             android:gravity="bottom|center"
             android:layout_alignParentBottom="true"
-            android:background="@color/sweetSweetTransparency"
-            android:onClick="noCamera"/>
+            android:background="@color/sweetSweetTransparency"/>
     </RelativeLayout>
 
 </RelativeLayout>

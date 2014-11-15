@@ -13,5 +13,12 @@
     <!-- existing group -->
     <string name="title_activity_setup_existing_group">Welcome back</string>
     <string name="setup_existing_group">It\’s great to see you again. To add this device to your Boop group, open the "Add device" screen on another Boop installation. Then, tap the button below!</string>
+    <string name="setup_qr_button">Scan QR</string>
+    <string name="title_activity_device_registered">DeviceRegistered</string>
+
+    <!-- upon registration -->
+    <string name="registered_device_headline">You\'re in!</string>
+    <string name="registered_device_content">Yes, it really was that simple. One scan, and you\'re good to go! Now, Boop will sit in all your share menus so that you can share all kinds of files - and receive them too.</string>
+    <string name="registered_next_steps">View your group</string>
 
 </resources>

@@ -8,17 +8,17 @@
         revision="21.0.2"
         sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e"/>
     <item
-        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/classes-f5413342b9d12c9f31ffa0da720dc0992f41609e.jar"
-        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.0.2"
-        sha1="95fd37732ec852e99f07eeb516a3650172f1d136"/>
-    <item
         dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-dddd7622323d7a59b6498cc5f9b77b57048ff389.jar"
         jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
         jumboMode="false"
         revision="21.0.2"
         sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0"/>
+    <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/core-3.1.0-ba81422c2cbf57b7804713f4b5829931f371e895.jar"
+        jar="/Users/jamie/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.1.0/908e18674f895e3e1fa8f4a954b8c637a23d2801/core-3.1.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="908e18674f895e3e1fa8f4a954b8c637a23d2801"/>
     <item
         dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/classes-661fe84af63c3056e28530cf1b4e43cabdcc3cba.jar"
         jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
@@ -26,16 +26,34 @@
         revision="21.0.2"
         sha1="686344a780033e4ba22b926cd225f8d4941247e6"/>
     <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-78d0dc247534e1aa6c5e8fecf9972d1ffd78a74f.jar"
+        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.0/libs/internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="5a8e01742aee890c56fe638ea7c921b91a3fdc62"/>
+    <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/classes-f5413342b9d12c9f31ffa0da720dc0992f41609e.jar"
+        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="95fd37732ec852e99f07eeb516a3650172f1d136"/>
+    <item
         dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/classes-c6a65290c906903aedab0535faf9355a41566088.jar"
         jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.0/classes.jar"
         jumboMode="false"
         revision="21.0.2"
         sha1="0c0c19759e5868604a3b4c2c0074ee9404d73c76"/>
     <item
-        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-78d0dc247534e1aa6c5e8fecf9972d1ffd78a74f.jar"
-        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.0/libs/internal_impl-21.0.0.jar"
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/classes-5dc8b7f9d61d0577d334fb2028c81c803e62870d.jar"
+        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/zxing/1.5/classes.jar"
         jumboMode="false"
         revision="21.0.2"
-        sha1="5a8e01742aee890c56fe638ea7c921b91a3fdc62"/>
+        sha1="2aa015d05422639a5ff9c861488b56e447a77b4b"/>
+    <item
+        dex="/Users/jamie/GitHub/boop-android/app/build/intermediates/pre-dexed/debug/classes-b05133c5b047c8ce3e77d50d7461ef832e39bf29.jar"
+        jar="/Users/jamie/GitHub/boop-android/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.5/classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="85fd787f604f8fc6564ff7d4cce05f6522f180ab"/>
 
 </pre-dex-items>

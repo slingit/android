@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.boopit.boopapp" >
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -19,12 +21,22 @@
         <activity
             android:name="me.boopit.boopapp.SetupFirstDevice"
             android:label="@string/title_activity_setup_first_device"
-            android:theme="@style/Theme.BoopSetUpTheme">
+            android:theme="@style/Theme.BoopSetUpTheme" >
         </activity>
         <activity
             android:name="me.boopit.boopapp.SetupExistingGroup"
             android:label="@string/title_activity_setup_existing_group"
-            android:theme="@style/Theme.BoopSetUpTheme">
+            android:theme="@style/Theme.BoopSetUpTheme" >
+        </activity>
+        <activity
+            android:name="me.boopit.boopapp.HandleQRScan"
+            android:label="@string/title_activity_setup_existing_group"
+            android:theme="@style/Theme.BoopSetUpTheme" >
+        </activity>
+        <activity
+            android:name="me.boopit.boopapp.DeviceRegistered"
+            android:label="@string/title_activity_device_registered"
+            android:theme="@style/Theme.BoopSetUpTheme" >
         </activity>
     </application>
 
