@@ -2,6 +2,8 @@
 <resources>
     <color name="orange">#FCB544</color>
     <color name="darkOrange">#C99135</color>
+    <color name="purple">#723d83</color>
+    <color name="darkPurple">#611872</color>
     <color name="white">#FFFFFF</color>
     <color name="blue">#3498DB</color>
     <color name="darkBlue">#2A79AE</color>
