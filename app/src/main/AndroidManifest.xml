@@ -38,6 +38,11 @@
             android:label="@string/title_activity_device_registered"
             android:theme="@style/Theme.BoopSetUpTheme" >
         </activity>
+        <activity
+            android:name="me.boopit.boopapp.BoopMainApp"
+            android:label="@string/title_activity_boop_main_app"
+            android:theme="@style/Theme.BoopMainTheme">
+        </activity>
     </application>
 
 </manifest>

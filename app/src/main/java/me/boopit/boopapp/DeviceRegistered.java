@@ -1,10 +1,12 @@
 package me.boopit.boopapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class DeviceRegistered extends Activity {
@@ -41,5 +43,11 @@ public class DeviceRegistered extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToNavView(View v) {
+        /*Intent navViewIntent = new Intent(this, BoopNavActivity.class);
+        navViewIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(navViewIntent);*/
     }
 }

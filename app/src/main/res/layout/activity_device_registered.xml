@@ -41,7 +41,8 @@
             android:textStyle="italic"
             android:gravity="bottom|center"
             android:layout_alignParentBottom="true"
-            android:background="@color/sweetSweetTransparency"/>
+            android:background="@color/sweetSweetTransparency"
+            android:onClick="goToNavView"/>
     </RelativeLayout>
 
 </RelativeLayout>
