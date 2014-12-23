@@ -3,29 +3,51 @@ package me.boopit.boopapp;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+
+import java.util.UUID;
+
+import com.loopj.android.http.*;
 
 
 public class SetupFirstDevice extends Activity {
 
     private int transitionTime = 450;
     private PopupWindow noCameraWindow;
+    private String groupUUID;
+    private String androidID;
+    private String pushToken;
+    private SharedPreferences settings;
+    private String TAG = "BOOP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_first_device);
+
+        settings = getSharedPreferences("Boop", MODE_PRIVATE);
         // Set the title
         // initial toolbar
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -49,6 +71,40 @@ public class SetupFirstDevice extends Activity {
         final AnimatorSet mAnimationSet = new AnimatorSet();
         mAnimationSet.play(fadeIn);
         mAnimationSet.start();
+
+        // Create a UUID for the group
+        groupUUID = UUID.randomUUID().toString();
+
+        // And get the 64-bit ANDROID_ID
+        androidID = settings.getString("androidID", "DEFAULT");
+
+        // Get the Push Token from First device setup
+        pushToken = settings.getString("GCMToken", "DEFAULT");
+
+        Log.i(TAG, "ID: " + androidID + ", TOKEN: " + pushToken);
+
+        // Generate a QR code
+        QRCodeWriter writer = new QRCodeWriter();
+        try {
+            BitMatrix matrix = writer.encode(
+                    // cut down the image size to stop UI lag
+                    groupUUID, BarcodeFormat.QR_CODE, 512, 512
+            );
+            // then encode image as matrix and display
+            ImageView QRImageView = (ImageView)findViewById(R.id.QRImageView);
+            QRImageView.setImageBitmap(MatrixToBitMap(matrix));
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+        // Once we show the QR code, _then_ create the group on the Boop servers
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        params.put("group_id", groupUUID);
+        params.put("device_uuid", androidID);
+        params.put("token", pushToken);
+        params.put("type", "AndroidDevice");
+        //client.post
     }
 
 
@@ -86,5 +142,25 @@ public class SetupFirstDevice extends Activity {
 
     public void removePopup(View v) {
         noCameraWindow.dismiss();
+    }
+
+    /*
+     * Write Matrix to a new Bitmap.
+     * @param matrix: the matrix to write.
+     * @return the new Bitmap object.
+     */
+    public static Bitmap MatrixToBitMap(BitMatrix matrix) {
+        int height = matrix.getHeight();
+        int width = matrix.getWidth();
+        // use RGB_565 for lower memory footprint
+        Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+        // and set the background color
+        ColorDrawable cd = new ColorDrawable(0xfff3f3f3);
+        for(int x = 0; x < width; x++) {
+            for(int y = 0; y < height; y++) {
+                bmp.setPixel(x, y, matrix.get(x,y) ? Color.BLACK : cd.getColor());
+            }
+        }
+        return bmp;
     }
 }

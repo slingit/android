@@ -10,4 +10,5 @@
     <color name="green">#2ECC71</color>
     <color name="darkGreen">#25A35A</color>
     <color name="sweetSweetTransparency">#00ffffff</color>
+    <color name="backgroundDefault">#fff3f3f3</color>
 </resources>

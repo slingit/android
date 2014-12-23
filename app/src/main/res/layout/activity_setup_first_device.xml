@@ -32,15 +32,16 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_marginBottom="0dip"/>
         <ImageView
+            android:id="@+id/QRImageView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/sample_qr"
             android:layout_below="@id/setup_text"
             android:padding="18dip"
+            android:paddingTop="0dip"
             android:layout_marginBottom="12dip"
         />
-
-        <!-- it doesn't have a camera? You're SOL... for now. TODO: make this class -->
+        <!-- what we display when the user doesn't have a camera -->
         <Button
             android:text="@string/setup_no_camera"
             android:layout_width="fill_parent"

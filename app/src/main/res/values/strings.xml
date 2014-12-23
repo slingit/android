@@ -20,10 +20,12 @@
     <string name="registered_device_headline">You\'re in!</string>
     <string name="registered_device_content">Yes, it really was that simple. One scan, and you\'re good to go! Now, Boop will sit in all your share menus so that you can share all kinds of files - and receive them too.</string>
     <string name="registered_next_steps">View your group</string>
+
+    <!-- The main activity -->
     <string name="title_activity_boop_nav">BoopNavActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">Your Devices</string>
+    <string name="title_section2">Received Boops</string>
+    <string name="title_section3">Sent Boops</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>

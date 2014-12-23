@@ -2,7 +2,7 @@ package me.boopit.boopapp;
 
 
 import android.app.Activity;
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.app.Fragment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -98,7 +98,7 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
-                getActionBar().getThemedContext(),
+                ((BoopMainApp)getActivity()).getSupportActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
                 new String[]{
@@ -140,7 +140,9 @@ public class NavigationDrawerFragment extends Fragment {
                 R.drawable.ic_drawer,             /* nav drawer image to replace 'Up' caret */
                 R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
                 R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
-        ) {
+        )
+
+        {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -267,7 +269,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private ActionBar getActionBar() {
-        return getActivity().getActionBar();
+        return ((BoopMainApp)getActivity()).getSupportActionBar();
     }
 
     /**

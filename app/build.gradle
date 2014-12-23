@@ -13,8 +13,8 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            /*runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'*/
         }
     }
 }
@@ -25,4 +25,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.2'
     compile 'me.dm7.barcodescanner:zxing:1.5'
     compile 'com.android.support:support-v4:21.0.2'
+    compile 'com.loopj.android:android-async-http:1.4.5'
+    compile "com.google.android.gms:play-services:3.1.+"
 }

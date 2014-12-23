@@ -4,7 +4,8 @@
         <!-- Set AppCompat’s color theming attrs -->
         <item name="colorPrimary">@color/purple</item>
         <item name="colorPrimaryDark">@color/darkPurple</item>
-        <!-- The rest of your attributes -->
+        <!-- and everything else -->
+        <item name="android:windowBackground">@color/backgroundDefault</item>
     </style>
     <style name="Theme.BoopSetUpTheme.Title">
         <item name="android:textColor">@color/white</item>
@@ -23,7 +24,8 @@
         <!-- Set AppCompat’s color theming attrs -->
         <item name="colorPrimary">@color/purple</item>
         <item name="colorPrimaryDark">@color/darkPurple</item>
-        <!-- The rest of your attributes -->
+        <!-- and everythinge else -->
+        <item name="android:windowBackground">@color/backgroundDefault</item>
     </style>
     <style name="Theme.BoopMainTheme.Title">
         <item name="android:textColor">@color/white</item>
@@ -37,5 +39,11 @@
     <style name="Theme.BoopMainTheme.PopUpAnimation">
         <item name="android:windowEnterAnimation">@anim/popup_show</item>
         <item name="android:windowExitAnimation">@anim/popup_hide</item>
+    </style>
+    <style name="Theme.BoopMainTheme.NavigationListView">
+        <item name="android:background">#ffffff</item>
+        <item name="android:textColor">@color/darkPurple</item>
+        <item name="android:colorActivatedHighlight">#ffffff</item>
+        <item name="android:textColorHighlight">@color/purple</item>
     </style>
 </resources>

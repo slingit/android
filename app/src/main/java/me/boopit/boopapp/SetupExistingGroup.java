@@ -20,9 +20,6 @@ public class SetupExistingGroup extends Activity {
 
     private int transitionTime = 450;
 
-    // define mScannerView
-    private ZXingScannerView mScannerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

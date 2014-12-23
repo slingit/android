@@ -46,8 +46,8 @@ public class DeviceRegistered extends Activity {
     }
 
     public void goToNavView(View v) {
-        /*Intent navViewIntent = new Intent(this, BoopNavActivity.class);
+        Intent navViewIntent = new Intent(this, BoopMainApp.class);
         navViewIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(navViewIntent);*/
+        startActivity(navViewIntent);
     }
 }

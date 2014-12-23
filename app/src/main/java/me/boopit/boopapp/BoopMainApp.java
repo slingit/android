@@ -2,12 +2,13 @@ package me.boopit.boopapp;
 
 import android.app.Activity;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,7 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-public class BoopMainApp extends Activity
+public class BoopMainApp extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
@@ -71,7 +72,7 @@ public class BoopMainApp extends Activity
     }
 
     public void restoreActionBar() {
-        ActionBar actionBar = getActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
