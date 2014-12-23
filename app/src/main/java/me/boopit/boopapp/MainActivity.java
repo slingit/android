@@ -123,6 +123,7 @@ public class MainActivity extends ListActivity {
         Log.i(TAG, "Checking GPS");
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if (resultCode != ConnectionResult.SUCCESS) {
+                Log.i(TAG, "GPS not successful");
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
                 // prompt to solve the error
                 GooglePlayServicesUtil.getErrorDialog(resultCode, this, PLAY_SERVICES_RESOLUTION_REQUEST).show();
@@ -144,7 +145,7 @@ public class MainActivity extends ListActivity {
             }
             return false;
         }
-        return false;
+        return true;
     }
 
     /*
@@ -186,14 +187,12 @@ public class MainActivity extends ListActivity {
      */
 
     private void firstLaunch() {
-        Log.i(TAG, "FIRST LAUNCH CHECK");
         // Check if it's the first launch
         //boolean firstRun = settings.getBoolean("firstRun", true);
         boolean firstRun = true;
         if (firstRun) {
             // get device ID
             String androidID = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
-            Log.i(TAG, "TEST: " + androidID);
             settings.edit().putString("androidID", androidID).apply();
             // check if Google Play Services is installed, the app won't work otherwise
             if (checkPlayServices()) {
@@ -206,7 +205,6 @@ public class MainActivity extends ListActivity {
                     Log.i(TAG, "Registering in background");
                 } else {
                     settings.edit().putString("GCMToken", GCMToken).apply();
-                    Log.i(TAG, "Already exists: " + GCMToken);
                 }
             }
 

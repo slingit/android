@@ -31,6 +31,8 @@ import java.util.UUID;
 
 import com.loopj.android.http.*;
 
+import org.apache.http.Header;
+
 
 public class SetupFirstDevice extends Activity {
 
@@ -39,6 +41,7 @@ public class SetupFirstDevice extends Activity {
     private String groupUUID;
     private String androidID;
     private String pushToken;
+    private String createUrl;
     private SharedPreferences settings;
     private String TAG = "BOOP";
 
@@ -100,11 +103,26 @@ public class SetupFirstDevice extends Activity {
         // Once we show the QR code, _then_ create the group on the Boop servers
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        params.put("group_id", groupUUID);
-        params.put("device_uuid", androidID);
-        params.put("token", pushToken);
-        params.put("type", "AndroidDevice");
-        //client.post
+        params.put("device[group_id]", groupUUID);
+        params.put("device[id]", androidID);
+        params.put("device[token]", pushToken);
+        params.put("device[type]", "GoogleDevice");
+        // get URL from strings.xml, set it
+        createUrl = getResources().getString(R.string.base_url) + "/v1/devices/create";
+        // now send the post request
+        client.post(this, createUrl, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                Log.i(TAG, "GROUP CREATED: " + response);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                String response = new String(responseBody);
+                Log.i(TAG, "HTTPERR: " + response);
+            }
+        });
     }
 
 
