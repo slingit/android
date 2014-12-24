@@ -86,6 +86,8 @@ public class SetupFirstDevice extends Activity {
 
         Log.i(TAG, "ID: " + androidID + ", TOKEN: " + pushToken);
 
+        // TODO: check these values aren't null or DEFAULT.
+
         // Generate a QR code
         QRCodeWriter writer = new QRCodeWriter();
         try {
@@ -108,13 +110,23 @@ public class SetupFirstDevice extends Activity {
         params.put("device[token]", pushToken);
         params.put("device[type]", "GoogleDevice");
         // get URL from strings.xml, set it
-        createUrl = getResources().getString(R.string.base_url) + "/v1/devices/create";
+        createUrl = getResources().getString(R.string.api_url) + "/v1/devices/create";
+        Log.i(TAG,  "URL: " + createUrl);
         // now send the post request
         client.post(this, createUrl, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
                 Log.i(TAG, "GROUP CREATED: " + response);
+                if(statusCode == 201) {
+                    // created succesfully
+                    Log.i(TAG, "GROUP CREATED: " + response);
+                    //TODO: create a GCM listener to respond when another device joins the group.
+                } else {
+                    // reporting success, but probably not _actually_ success
+                    Log.i(TAG, "SUCFAIL (" +  statusCode + ") : "+ response);
+                }
+
             }
 
             @Override

@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
 
     <!-- Urls etc -->
-    <string name="base_url">http://boopproductionfb59.ninefold-apps.com</string>
+    <string name="api_url">http://boopproductionfb59.ninefold-apps.com/api</string>
 
     <!-- the "First Time" screen -->
     <string name="title_activity_setup_first_device">First time</string>

@@ -188,8 +188,7 @@ public class MainActivity extends ListActivity {
 
     private void firstLaunch() {
         // Check if it's the first launch
-        //boolean firstRun = settings.getBoolean("firstRun", true);
-        boolean firstRun = true;
+        boolean firstRun = settings.getBoolean("firstRun", true);
         if (firstRun) {
             // get device ID
             String androidID = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
@@ -207,9 +206,12 @@ public class MainActivity extends ListActivity {
                     settings.edit().putString("GCMToken", GCMToken).apply();
                 }
             }
-
-            // set flag to false to avoid running this in future
-            settings.edit().putBoolean("firstRun", false).apply();
+        } else {
+            // we don't want to show MainActvity: show BoopMainApp.class
+            Intent navViewIntent = new Intent(this, BoopMainApp.class);
+            // we don't need no history, let it burn: burn
+            navViewIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(navViewIntent);
         }
     }
 

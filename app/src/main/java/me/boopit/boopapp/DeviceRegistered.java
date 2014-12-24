@@ -2,6 +2,7 @@ package me.boopit.boopapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -10,6 +11,8 @@ import android.view.View;
 
 
 public class DeviceRegistered extends Activity {
+
+    private SharedPreferences settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,9 @@ public class DeviceRegistered extends Activity {
 
         toolbar.setTitle(getString(R.string.registered_device_headline));
         toolbar.setTitleTextAppearance(this, R.style.Theme_BoopSetUpTheme_Title);
+
+        // once device registered, we never want to show the start screen again - set flag
+        settings.edit().putBoolean("firstRun", false).apply();
     }
 
 
