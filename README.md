@@ -1,5 +1,11 @@
 #Boop for Android
-It's the code for Boop for Android: it does what it says on the tin, really.
+It's the code for Boop for Android: it does what it says on the tin, really. **This is nowhere near complete: see *Why can I see this?* for more information on that.**
+
+## Getting started
+1. Clone the repo  
+2. Open Android Studio -> Import Project  
+3. Click `boop-android/settings.gradle`  
+4. Let Gradle do it's thing.
 
 ## What is this?  
 Boop is the simplest way to share files from any device. Use our one time frictionless setup and you're good to go!

@@ -110,7 +110,7 @@ public class SetupFirstDevice extends Activity {
         params.put("device[token]", pushToken);
         params.put("device[type]", "GoogleDevice");
         // get URL from strings.xml, set it
-        createUrl = getResources().getString(R.string.api_url) + "/v1/devices/create";
+        createUrl = getResources().getString(R.string.api_url) + "/v1/devices";
         Log.i(TAG,  "URL: " + createUrl);
         // now send the post request
         client.post(this, createUrl, params, new AsyncHttpResponseHandler() {
