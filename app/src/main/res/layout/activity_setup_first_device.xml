@@ -40,6 +40,8 @@
             android:padding="18dip"
             android:paddingTop="0dip"
             android:layout_marginBottom="12dip"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
         />
         <!-- what we display when the user doesn't have a camera -->
         <Button

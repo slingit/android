@@ -86,9 +86,17 @@ public class SetupFirstDevice extends Activity {
 
         Log.i(TAG, "ID: " + androidID + ", TOKEN: " + pushToken);
 
-        // TODO: check these values aren't null or DEFAULT.
+        // if pushToken hasn't initialied properly, we're gonna wait until it has
+        while(pushToken == "DEFAULT") {
+            pushToken = settings.getString("GCMToken", "DEFAULT");
+        }
 
-        // Generate a QR code
+        // and the same with androidID
+        while(androidID == "DEFAULT") {
+            androidID = settings.getString("androidID", "DEFAULT");
+        }
+
+        // Once we have these values, generate a QR code
         QRCodeWriter writer = new QRCodeWriter();
         try {
             BitMatrix matrix = writer.encode(
@@ -131,8 +139,8 @@ public class SetupFirstDevice extends Activity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                String response = new String(responseBody);
-                Log.i(TAG, "HTTPERR: " + response);
+                // Don't show the whole response, clogs up logcat
+                Log.i(TAG, "HTTPERR: " + statusCode);
             }
         });
     }
