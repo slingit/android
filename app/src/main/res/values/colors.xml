@@ -3,12 +3,15 @@
     <color name="orange">#FCB544</color>
     <color name="darkOrange">#C99135</color>
     <color name="purple">#723d83</color>
+    <color name="purplet">#CC723d83</color>
     <color name="darkPurple">#611872</color>
     <color name="white">#FFFFFF</color>
+    <color name="lightGrey">#E3E3E3</color>
     <color name="blue">#3498DB</color>
     <color name="darkBlue">#2A79AE</color>
     <color name="green">#2ECC71</color>
     <color name="darkGreen">#25A35A</color>
+    <color name="black">#000000</color>
     <color name="sweetSweetTransparency">#00ffffff</color>
     <color name="backgroundDefault">#fff3f3f3</color>
 </resources>

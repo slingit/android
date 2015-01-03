@@ -30,7 +30,7 @@ import java.io.IOException;
 
 public class MainActivity extends ListActivity {
 
-    private String TAG = "BOOP";
+    private String TAG = "SLING";
     private GoogleCloudMessaging gcm;
     private String GCMToken;
     private Context context = this;
@@ -49,18 +49,6 @@ public class MainActivity extends ListActivity {
 
         // Get SharedPreferences
         settings = getSharedPreferences("Boop", MODE_PRIVATE);
-
-        // Configure the Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        // TODO: enable translation and change all these values
-        toolbar.setTitle("Set up");
-        toolbar.setTitleTextAppearance(this, R.style.Theme_BoopSetUpTheme_Title);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Navigation", Toast.LENGTH_SHORT).show();
-            }
-        });
         // And lists!
         String[] optionsValues = new String[]{"This is my first device", "Add to an existing group"};
         String[] optionsDescriptions = new String[]{"We'll create a new Boop group for you.", "Be sure to have your other device handy"};
@@ -71,16 +59,6 @@ public class MainActivity extends ListActivity {
         firstLaunch();
 
     }
-
-    /*@Override
-    protected void onResume() {
-        // apparently we need to check play services on resume as well
-        checkPlayServices();
-        Log.i(TAG, "Resuming for some reason");
-        firstLaunch();
-        super.onResume();
-    }*/
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

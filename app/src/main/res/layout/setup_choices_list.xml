@@ -38,6 +38,7 @@
             android:singleLine="true"
             android:text="Description"
             android:textSize="12sp"
+            android:textColor="@color/white"
             />
 
         <TextView
@@ -51,7 +52,9 @@
             android:layout_toRightOf="@id/icon"
             android:gravity="center_vertical"
             android:text="Example application"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@color/lightGrey"
+            />
 
         <View style="@style/Theme.BoopSetUpTheme.Divider"
             android:layout_below="@id/secondLine"
