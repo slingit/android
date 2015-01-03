@@ -56,7 +56,7 @@
             android:theme="@style/Theme.BoopSetUpTheme" >
         </activity>
         <activity
-            android:name="me.slingit.slingapp.BoopMainApp"
+            android:name=".SlingAuthenticatedMainView"
             android:label="@string/title_activity_boop_main_app"
             android:theme="@style/Theme.BoopMainTheme">
         </activity>

@@ -77,27 +77,9 @@ public class SetupFirstDevice extends Activity {
         mAnimationSet.play(fadeIn);
         mAnimationSet.start();
 
-        // Create a UUID for the group
+        // Create a UUID for the group, and update the initial registration with this group UUID
         groupUUID = UUID.randomUUID().toString();
-
-        // And get the 64-bit ANDROID_ID
-        androidID = settings.getString("androidID", "DEFAULT");
-
-        // Get the Push Token from First device setup
-        pushToken = settings.getString("GCMToken", "DEFAULT");
-
-        Log.i(TAG, "ID: " + androidID + ", TOKEN: " + pushToken);
-
-        // if pushToken hasn't initialied properly, we're gonna wait until it has
-        while(pushToken == "DEFAULT") {
-            pushToken = settings.getString("GCMToken", "DEFAULT");
-        }
-
-        // and the same with androidID
-        while(androidID == "DEFAULT") {
-            androidID = settings.getString("androidID", "DEFAULT");
-        }
-
+        
         // Once we have these values, generate a QR code
         QRCodeWriter writer = new QRCodeWriter();
         try {
@@ -112,7 +94,7 @@ public class SetupFirstDevice extends Activity {
             e.printStackTrace();
         }
 
-        // Once we show the QR code, _then_ create the group on the Boop servers
+        /* Once we show the QR code, _then_ create the group on the Boop servers
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.put("device[group_id]", groupUUID);
@@ -145,6 +127,12 @@ public class SetupFirstDevice extends Activity {
                 Log.i(TAG, "HTTPERR: " + statusCode);
             }
         });
+        
+        */
+
+        // send off a device registration, if true, send group UUID
+        RegisterDevice.initialRegistration(this);
+            //RegisterDevice.groupRegistration(this, groupUUID);
     }
 
 

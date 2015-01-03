@@ -5,7 +5,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="setup_toolbar_height">128dip</dimen>
-    <dimen name="setup_relative_padding">56dip</dimen>
+    <dimen name="setup_relative_padding">144dip</dimen>
+    <dimen name="welcome_padding">56dip</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>
 
 </resources>

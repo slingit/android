@@ -14,10 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
-import me.slingit.slingapp.R;
 
-
-public class BoopMainApp extends ActionBarActivity
+public class SlingAuthenticatedMainView extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
@@ -139,7 +137,7 @@ public class BoopMainApp extends ActionBarActivity
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((BoopMainApp) activity).onSectionAttached(
+            ((SlingAuthenticatedMainView) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }

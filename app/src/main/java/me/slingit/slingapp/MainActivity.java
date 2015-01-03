@@ -23,8 +23,6 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.io.IOException;
 
-import me.slingit.slingapp.R;
-
 
 public class MainActivity extends ListActivity {
 
@@ -49,7 +47,7 @@ public class MainActivity extends ListActivity {
         settings = getSharedPreferences("Boop", MODE_PRIVATE);
         // And lists!
         String[] optionsValues = new String[]{"This is my first device", "Add to an existing group"};
-        String[] optionsDescriptions = new String[]{"We'll create a new Boop group for you.", "Be sure to have your other device handy"};
+        String[] optionsDescriptions = new String[]{"We'll create a new Sling group for you.", "Be sure to have your other device handy"};
         // finally, put our custom Adapter into action. (see SetupArrayAdapter)
         SetupArrayAdapter adapter = new SetupArrayAdapter(this, optionsValues, optionsDescriptions);
         setListAdapter(adapter);
@@ -184,7 +182,7 @@ public class MainActivity extends ListActivity {
             }
         } else {
             // we don't want to show MainActvity: show BoopMainApp.class
-            Intent navViewIntent = new Intent(this, BoopMainApp.class);
+            Intent navViewIntent = new Intent(this, SlingAuthenticatedMainView.class);
             // we don't need no history, let it burn: burn
             navViewIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(navViewIntent);

@@ -9,8 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import me.slingit.slingapp.R;
-
 
 public class DeviceRegistered extends Activity {
 
@@ -54,7 +52,7 @@ public class DeviceRegistered extends Activity {
     }
 
     public void goToNavView(View v) {
-        Intent navViewIntent = new Intent(this, BoopMainApp.class);
+        Intent navViewIntent = new Intent(this, SlingAuthenticatedMainView.class);
         navViewIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(navViewIntent);
     }

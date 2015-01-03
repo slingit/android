@@ -22,8 +22,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import me.slingit.slingapp.R;
-
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
@@ -100,7 +98,7 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
-                ((BoopMainApp)getActivity()).getSupportActionBar().getThemedContext(),
+                ((SlingAuthenticatedMainView)getActivity()).getSupportActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
                 new String[]{
@@ -271,7 +269,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private ActionBar getActionBar() {
-        return ((BoopMainApp)getActivity()).getSupportActionBar();
+        return ((SlingAuthenticatedMainView)getActivity()).getSupportActionBar();
     }
 
     /**
