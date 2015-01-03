@@ -1,4 +1,4 @@
-package me.boopit.boopapp;
+package me.slingit.slingapp;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import me.slingit.slingapp.R;
 
 
 public class DeviceRegistered extends Activity {

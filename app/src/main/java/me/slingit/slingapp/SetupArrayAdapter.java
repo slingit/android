@@ -1,4 +1,4 @@
-package me.boopit.boopapp;
+package me.slingit.slingapp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import me.slingit.slingapp.R;
 
 /**
  * Created by jamie on 14/11/14.

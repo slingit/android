@@ -1,4 +1,4 @@
-package me.boopit.boopapp;
+package me.slingit.slingapp;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -32,6 +32,8 @@ import java.util.UUID;
 import com.loopj.android.http.*;
 
 import org.apache.http.Header;
+
+import me.slingit.slingapp.R;
 
 
 public class SetupFirstDevice extends Activity {

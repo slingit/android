@@ -1,4 +1,4 @@
-package me.boopit.boopapp;
+package me.slingit.slingapp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

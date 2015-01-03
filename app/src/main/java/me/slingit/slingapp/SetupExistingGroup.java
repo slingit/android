@@ -1,4 +1,4 @@
-package me.boopit.boopapp;
+package me.slingit.slingapp;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import me.slingit.slingapp.R;
 
 
 public class SetupExistingGroup extends Activity {
