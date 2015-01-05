@@ -22,6 +22,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.io.IOException;
+import java.util.UUID;
 
 
 public class MainActivity extends ListActivity {
@@ -165,8 +166,8 @@ public class MainActivity extends ListActivity {
         boolean firstRun = settings.getBoolean("firstRun", true);
         if (firstRun) {
             // get device ID
-            String androidID = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
-            settings.edit().putString("androidID", androidID).apply();
+            String deviceID = UUID.randomUUID().toString();
+            settings.edit().putString("deviceID", deviceID).apply();
             // check if Google Play Services is installed, the app won't work otherwise
             if (checkPlayServices()) {
                 // check if ths device has already registered for GCM

@@ -6,8 +6,9 @@
     <string name="action_settings">Settings</string>
 
     <!-- Urls etc -->
-    <string name="api_url">http://boopproductionfb59.ninefold-apps.com/api</string>
-
+    <string name="api_url">http://slingit.herokuapp.com/</string>
+    <string name="api_version">1.0.0</string>
+    
     <!-- the "First Time" screen -->
     <string name="title_activity_setup_first_device">First time</string>
     <string name="setup_first_device">Welcome aboard! Scan the QR code below on another device with Sling installed, and you\'ll be on your way.</string>

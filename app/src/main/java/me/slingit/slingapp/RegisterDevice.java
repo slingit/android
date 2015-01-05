@@ -1,5 +1,6 @@
 package me.slingit.slingapp;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.Settings;
@@ -10,6 +11,10 @@ import java.util.UUID;
 import com.loopj.android.http.*;
 
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.ByteArrayEntity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by jamie on 03/01/15.
@@ -18,13 +23,14 @@ public class RegisterDevice {
     
     public static Boolean registrationResult;
 
-    /*
-        The initial device registration. Called when a user taps either of the two menu options. 
-        Parameters expected: Context of the calling Activity
-        Returns: success callback
+    /**
+     * The initial device registration. Called when a user taps either of the two menu options.
+     * @param context       The context from the calling activity
      */
     public static void initialRegistration(Context context) {
         final String TAG = "SLING";
+        final String versionNo = context.getResources().getString(R.string.api_version);
+        
         SharedPreferences settings = context.getSharedPreferences("Boop", context.MODE_PRIVATE);
         
         // generate secret as UUID, save it - needs to remain the same for the life of the device
@@ -33,60 +39,74 @@ public class RegisterDevice {
         // put these into storage for later use
         settings.edit().putString("deviceSecret", deviceSecret).apply();
 
-        // Get the 64-bit ANDROID_ID, use as deviceID
-        String androidID = settings.getString("androidID", "DEFAULT");
+        // Get the UUID we generated earlier, use as deviceID
+        String deviceID = settings.getString("deviceID", "DEFAULT");
 
         // check this is actually loaded
-        while(androidID == "DEFAULT") {
-            androidID = settings.getString("androidID", "DEFAULT");
+        while(deviceID == "DEFAULT") {
+            deviceID = settings.getString("deviceID", "DEFAULT");
         }
         
         // create a POST request to /devices/create
         AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
         
-        // add params
-        params.add("id", androidID);
-        params.add("secret", deviceSecret);
+        // add the API version header
+        client.addHeader("X-API-Version", versionNo);
         
-        String requestURL = context.getResources().getString(R.string.api_url) + "/v1/devices";
-        client.post(context, requestURL, params, new JsonHttpResponseHandler() {
+        // Create the JSON object for the request
+        JSONObject jo = new JSONObject();
+        try {
+           jo = new JSONObject().put("devices", new JSONObject().put("id", deviceID).put("secret", deviceSecret));
+        } catch(JSONException e) {
+            Log.i(TAG, "JSON ERROR: " + e);
+        }
+        
+        Log.i(TAG, jo.toString());
+        
+        // create the ByteArrayEntity to send as the request
+        ByteArrayEntity requestEntity = new ByteArrayEntity(jo.toString().getBytes());
+
+        String requestURL = context.getResources().getString(R.string.api_url) + "/devices";
+        client.post(context, requestURL, requestEntity, "application/json", new AsyncHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, org.json.JSONObject response) {
+            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 if(statusCode == 201) {
                     registrationResult = true;
                 }
-                Log.i(TAG, "RESPONSE[" + statusCode + "]: ");
+                Log.i(TAG, "RESPONSE[" + statusCode + "]: " + new String(response));
                 // TODO: pass this back to the user
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable error, org.json.JSONObject response) {
+            public void onFailure(int statusCode, Header[] headers,  byte[] response, Throwable error) {
                 registrationResult = false;
-                Log.i(TAG, "RESPONSE[" + statusCode + "]: ");
+                Log.i(TAG, "RESPONSE[" + statusCode + "]");
+                error.printStackTrace();
                 // TODO: try again
             }
         });
      }
 
-    /*
-        The group registration, either after scanning a QR or creating one.
-        Parameters expected: Context of the calling Activity, group UUID
-        Returns: success callback
+    /**
+     * The group registration, either after scanning a QR or creating one.
+     * @param context       The context from the calling activity
+     * @param groupUUID     The group UUID the device shall register with
      */
     public static void groupRegistration(Context context, String groupUUID) {
         final String TAG = "SLING";
+        final String versionNo = context.getResources().getString(R.string.api_version);
+        
         SharedPreferences settings = context.getSharedPreferences("Boop", context.MODE_PRIVATE);
 
         // get the the device UUID
-        String androidID = settings.getString("androidID", "DEFAULT");
+        String deviceID = settings.getString("deviceID", "DEFAULT");
         
         // get the device secret
         String deviceSecret = settings.getString("deviceSecret", "DEFAULT");
 
         // check this is actually loaded
-        while(androidID == "DEFAULT") {
-            androidID = settings.getString("androidID", "DEFAULT");
+        while(deviceID == "DEFAULT") {
+            deviceID = settings.getString("deviceID", "DEFAULT");
         }
         
         while(deviceSecret == "DEFAULT") {
@@ -97,13 +117,16 @@ public class RegisterDevice {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
+        // add the API version header
+        client.addHeader("X-API-Version", versionNo);
+
         // add params
-        params.add("id", androidID);
+        params.add("id", deviceID);
         params.add("secret", deviceSecret);
         params.add("group", groupUUID);
 
         // as we're updating, we pass the ID as part of the string
-        String requestURL = context.getResources().getString(R.string.api_url) + "/v1/devices/" + androidID;
+        String requestURL = context.getResources().getString(R.string.api_url) + "/devices/" + deviceID;
         client.post(context, requestURL, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, org.json.JSONObject response) {
@@ -122,17 +145,23 @@ public class RegisterDevice {
             }
         });
     }
-    
+
+    /**
+     * Allows the device to register to receive push notifications.
+     * @param context       The context from the calling activity
+     */
     public static void pushRegistration(Context context) {
         final String TAG = "SLING";
+        final String versionNo = context.getResources().getString(R.string.api_version);
+        
         SharedPreferences settings = context.getSharedPreferences("Boop", context.MODE_PRIVATE);
 
-        // Get the 64-bit ANDROID_ID, use as deviceID
-        String androidID = settings.getString("androidID", "DEFAULT");
+        // Get the UUID we generated earlier, use as deviceID
+        String deviceID = settings.getString("deviceID", "DEFAULT");
 
         // check this is actually loaded
-        while(androidID == "DEFAULT") {
-            androidID = settings.getString("androidID", "DEFAULT");
+        while(deviceID == "DEFAULT") {
+            deviceID = settings.getString("deviceID", "DEFAULT");
         }
         
         //get the Push Token we generated on first launch.
@@ -147,9 +176,12 @@ public class RegisterDevice {
         RequestParams params = new RequestParams();
 
         // add params
-        params.add("id", androidID);
+        params.add("id", deviceID);
         params.add("pushToken", pushToken);
         params.add("type", "AndroidDevice");
+
+        // add the API version header
+        client.addHeader("X-API-Version", versionNo);
         
         //TODO: generate request
         
