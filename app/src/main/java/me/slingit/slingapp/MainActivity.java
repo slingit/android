@@ -76,14 +76,14 @@ public class MainActivity extends ListActivity {
                 // Intent for first device
                 Intent firstDeviceIntent = new Intent(this, SetupFirstDevice.class);
                 firstDeviceIntent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                firstDeviceIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(firstDeviceIntent);
                 break;
             case 1:
                 // Intent for existing group
                 Intent existingGroupIntent = new Intent(this, SetupExistingGroup.class);
                 existingGroupIntent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                existingGroupIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(existingGroupIntent);
                 break;
         }

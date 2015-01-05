@@ -18,7 +18,7 @@
     <string name="title_activity_setup_existing_group">Welcome back</string>
     <string name="setup_existing_group">It\’s great to see you again. To add this device to your Sling group, open the "Add device" screen on another Sling installation. Then, tap the button below!</string>
     <string name="setup_qr_button">Scan QR</string>
-    <string name="title_activity_device_registered">DeviceRegistered</string>
+    <string name="title_activity_device_registered">You\'re in!</string>
 
     <!-- upon registration -->
     <string name="registered_device_headline">You\'re in!</string>

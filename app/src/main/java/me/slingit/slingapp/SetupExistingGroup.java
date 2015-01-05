@@ -31,22 +31,10 @@ public class SetupExistingGroup extends Activity {
         toolbar.setTitle("Welcome back");
         toolbar.setTitleTextAppearance(this, R.style.Theme_BoopSetUpTheme_Title);
 
-        // Pretty colour transition
-        TransitionDrawable transition = (TransitionDrawable) findViewById(R.id.toolbar).getBackground();
-        transition.startTransition(transitionTime);
-
         // Blue status bar on 5.0+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.darkGreen));
         }
-
-        // Fade in the rest of the content
-        RelativeLayout lay = (RelativeLayout)findViewById(R.id.relativeLayoutContent);
-        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(lay, "alpha", 0f, 1f);
-        fadeIn.setDuration(transitionTime);
-        final AnimatorSet mAnimationSet = new AnimatorSet();
-        mAnimationSet.play(fadeIn);
-        mAnimationSet.start();
     }
 
 
