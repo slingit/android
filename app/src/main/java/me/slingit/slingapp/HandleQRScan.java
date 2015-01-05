@@ -40,9 +40,9 @@ public class HandleQRScan extends Activity implements ZXingScannerView.ResultHan
 
     @Override
     public void handleResult(Result rawResult) {
-        //TODO: verify and register the current device. For now, just log it!
         Log.v(TAG, rawResult.getText()); // Prints scan results
-        Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
+        // and then register the device with the group
+        RegisterDevice.groupRegistration(this, rawResult.getText());
         // Stop the camera
         mScannerView.stopCamera();
         // And, once we've done some Async things, move to the complete class which contains group information.

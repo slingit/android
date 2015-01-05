@@ -31,10 +31,13 @@ public class SetupExistingGroup extends Activity {
         toolbar.setTitle("Welcome back");
         toolbar.setTitleTextAppearance(this, R.style.Theme_BoopSetUpTheme_Title);
 
-        // Blue status bar on 5.0+
+        // Green status bar on 5.0+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.darkGreen));
         }
+
+        // send initial registration before we scan the QR code
+        RegisterDevice.initialRegistration(this);
     }
 
 
