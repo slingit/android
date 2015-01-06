@@ -184,6 +184,64 @@ public class RegisterDevice {
         client.addHeader("X-API-Version", versionNo);
         
         //TODO: generate request
+    }
+
+    /**
+     * Checks the registration status of a device. Used to check if server registration completes succesfully.
+     * @param context       The context from the calling activity
+     */
+    public static void showDeviceRegistration(Context context) {
+        final String TAG = "Sling";
+        final String versionNo = context.getResources().getString(R.string.api_version);
+
+        SharedPreferences settings = context.getSharedPreferences("Boop", context.MODE_PRIVATE);
+
+        // Get the UUID we generated earlier, use as deviceID
+        String deviceID = settings.getString("deviceID", "DEFAULT");
+
+        // check this is actually loaded
+        while(deviceID == "DEFAULT") {
+            deviceID = settings.getString("deviceID", "DEFAULT");
+        }
         
+        String deviceSecret = settings.getString("deviceSecret", "DEFAULT");
+        while(deviceSecret == "DEFAULT") {
+            deviceSecret = settings.getString("deviceSecret", "DEFAULT");
+        }
+        
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        // use basic auth based on the locally stored values
+        client.setBasicAuth(deviceID, deviceSecret);
+        
+        String requestURL = context.getResources().getString(R.string.api_url) + "/devices";
+        
+        // actually build the request
+        // Create the JSON object for the request
+        JSONObject jo = new JSONObject();
+        try {
+            jo = new JSONObject().put("show", new JSONObject().put("id", deviceID).put("secret", deviceSecret));
+        } catch(JSONException e) {
+            Log.i(TAG, "JSON ERROR: " + e);
+        }
+
+        Log.i(TAG, jo.toString());
+
+        // create the ByteArrayEntity to send as the request
+        ByteArrayEntity requestEntity = new ByteArrayEntity(jo.toString().getBytes());
+        
+        // make the request
+        client.post(context, requestURL, requestEntity, "application/json", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                Log.i(TAG, "success");
+                //TODO: return the details of registration back to client.
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                error.printStackTrace();
+            }
+        });
     }
 }
