@@ -37,7 +37,7 @@ public class SetupExistingGroup extends Activity {
         }
 
         // send initial registration before we scan the QR code
-        RegisterDevice.initialRegistration(this);
+        RegisterDevice.initialRegistration(this, false);
     }
 
 

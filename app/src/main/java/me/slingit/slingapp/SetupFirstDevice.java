@@ -64,9 +64,12 @@ public class SetupFirstDevice extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.darkBlue));
         }
-
-        // Create a UUID for the group, and update the initial registration with this group UUID
-        groupUUID = UUID.randomUUID().toString();
+        
+        // create device UUID
+        String groupUUID = UUID.randomUUID().toString();
+        
+        // Store in preferences
+        settings.edit().putString("groupUUID", groupUUID).apply();
         
         // Once we have these values, generate a QR code
         QRCodeWriter writer = new QRCodeWriter();
@@ -83,8 +86,7 @@ public class SetupFirstDevice extends Activity {
         }
 
         // send off a device registration, if true, send group UUID
-        RegisterDevice.initialRegistration(this);
-            //RegisterDevice.groupRegistration(this, groupUUID);
+        RegisterDevice.initialRegistration(this, true);
     }
 
 

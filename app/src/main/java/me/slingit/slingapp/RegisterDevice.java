@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.UUID;
 
@@ -24,15 +25,26 @@ public class RegisterDevice {
     public static Boolean registrationResult;
 
     /**
+     * Called when something bad happens within RegisterDevice.
+     * @param statusCode the status code of the error
+     * @param context the context of the calling... thing.
+     */
+    public static void showRegErrorToast(int statusCode, Context context) {
+        Toast toast = Toast.makeText(context, "Request failed [" + statusCode + "], try again later", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    /**
      * The initial device registration. Called when a user taps either of the two menu options.
      * @param context       The context from the calling activity
+     * @param isFirstDevice If SetupFirstDevice.java, call this. It creates the Group Registration too.                      
      */
-    public static void initialRegistration(Context context) {
+    public static void initialRegistration(Context context, final Boolean isFirstDevice) {
         final String TAG = "SLING";
         final String versionNo = context.getResources().getString(R.string.api_version);
         
         SharedPreferences settings = context.getSharedPreferences("Boop", context.MODE_PRIVATE);
-        
+
         // generate secret as UUID, save it - needs to remain the same for the life of the device
         String deviceSecret = UUID.randomUUID().toString();
         
@@ -65,6 +77,9 @@ public class RegisterDevice {
         
         // create the ByteArrayEntity to send as the request
         ByteArrayEntity requestEntity = new ByteArrayEntity(jo.toString().getBytes());
+        
+        // and pass context to request
+        final Context innerContext = context;
 
         String requestURL = context.getResources().getString(R.string.api_url) + "/devices";
         client.post(context, requestURL, requestEntity, "application/json", new AsyncHttpResponseHandler() {
@@ -74,7 +89,16 @@ public class RegisterDevice {
                     registrationResult = true;
                 }
                 Log.i(TAG, "RESPONSE[" + statusCode + "]: " + new String(response));
-                // TODO: pass this back to the user
+                if(isFirstDevice) {
+                    // Initialise preferences, get groupUUID
+                    SharedPreferences settings = innerContext.getSharedPreferences("Boop", innerContext.MODE_PRIVATE);
+                    String groupUUID = settings.getString("deviceUUID", "DEFAULT");
+                    while(groupUUID == "DEFAULT") {
+                        groupUUID = settings.getString("deviceUUID", "DEFAULT");
+                    }
+                    // send the request
+                    groupRegistration(innerContext, groupUUID);
+                }
             }
 
             @Override
@@ -82,7 +106,8 @@ public class RegisterDevice {
                 registrationResult = false;
                 Log.i(TAG, "RESPONSE[" + statusCode + "]");
                 error.printStackTrace();
-                // TODO: try again
+                // show error
+                showRegErrorToast(statusCode, innerContext);
             }
         });
      }
@@ -113,23 +138,34 @@ public class RegisterDevice {
             deviceSecret = settings.getString("deviceSecret", "DEFAULT");
         }
         
-        // create a POST request to /devices/:id (update)
+        // create a PUT request to /devices/:id (update)
         AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
 
         // add the API version header
         client.addHeader("X-API-Version", versionNo);
 
-        // add params
-        params.add("id", deviceID);
-        params.add("secret", deviceSecret);
-        params.add("group", groupUUID);
+        // Create the JSON object for the request
+        JSONObject jo = new JSONObject();
+        try {
+            jo = new JSONObject().put("devices", new JSONObject().put("id", deviceID).put("links", new JSONObject().put("group", groupUUID)));
+        } catch(JSONException e) {
+            Log.i(TAG, "JSON ERROR: " + e);
+        }
+
+        Log.i(TAG, jo.toString());
+
+        // create the ByteArrayEntity to send as the request
+        ByteArrayEntity requestEntity = new ByteArrayEntity(jo.toString().getBytes());
 
         // as we're updating, we pass the ID as part of the string
         String requestURL = context.getResources().getString(R.string.api_url) + "/devices/" + deviceID;
-        client.post(context, requestURL, params, new JsonHttpResponseHandler() {
+        // this request is authenticated
+        client.setBasicAuth(deviceID, deviceSecret);
+        Log.i(TAG, requestURL);
+        client.put(context, requestURL, requestEntity, "application/json", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, org.json.JSONObject response) {
+                Log.i(TAG, "YAY");
                 if(statusCode == 201) {
                     registrationResult = true;
                 }
@@ -139,6 +175,7 @@ public class RegisterDevice {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable error, org.json.JSONObject response) {
+                Log.i(TAG, "FAIL");
                 registrationResult = false;
                 Log.i(TAG, "RESPONSE[" + statusCode + "]: ");
                 // TODO: try again

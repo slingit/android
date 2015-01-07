@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
 
     <!-- Urls etc -->
-    <string name="api_url">http://slingit.herokuapp.com/</string>
+    <string name="api_url">http://slingit.herokuapp.com</string>
     <string name="api_version">1.0.0</string>
     
     <!-- the "First Time" screen -->
