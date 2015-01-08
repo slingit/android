@@ -19,5 +19,8 @@ We do. We fancied a bit of a change. There's really no reason for all of this to
 ## Aren't you planning to sell this?  
 Yes, we are. However, you're free to run sling-server on your own server, and compile your own version of the Android app without our payment logic and specify your own API endpoint: we just provide an easier way!  
 
+## Hey, where's the other stuff Sling is working on?
+Have a look on the GitHub organisation page: [https://github.com/slingit](github.com/slingit)
+
 ## You're doing <x> wrong / I have feedback / I baked you cookies
 Shoot me an email to [jamie@hoyle.io](mailto:jamie@hoyle.io)!
