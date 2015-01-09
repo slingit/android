@@ -159,26 +159,24 @@ public class RegisterDevice {
 
         // as we're updating, we pass the ID as part of the string
         String requestURL = context.getResources().getString(R.string.api_url) + "/devices/" + deviceID;
+        
         // this request is authenticated
+        /*String authorizationString = "Basic " + Base64.encodeToString(
+                (deviceID + ":" + deviceSecret).getBytes(),
+                Base64.NO_WRAP);
+        client.addHeader("Authorization", authorizationString);*/
+        
         client.setBasicAuth(deviceID, deviceSecret);
-        Log.i(TAG, requestURL);
-        client.put(context, requestURL, requestEntity, "application/json", new JsonHttpResponseHandler() {
+        
+        client.put(context, requestURL, requestEntity, "application/json", new AsyncHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, org.json.JSONObject response) {
-                Log.i(TAG, "YAY");
-                if(statusCode == 201) {
-                    registrationResult = true;
-                }
-                Log.i(TAG, "RESPONSE[" + statusCode + "]: ");
-                // TODO: pass this back to the user
+            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+                Log.i(TAG, "RESPONSE[" + statusCode + "]: " + new String(response));
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable error, org.json.JSONObject response) {
-                Log.i(TAG, "FAIL");
-                registrationResult = false;
-                Log.i(TAG, "RESPONSE[" + statusCode + "]: ");
-                // TODO: try again
+            public void onFailure(int statusCode, Header[] headers, byte[] response, Throwable error) {
+                Log.i(TAG, "RESPONSE[" + statusCode + "]: " + new String(response));
             }
         });
     }
