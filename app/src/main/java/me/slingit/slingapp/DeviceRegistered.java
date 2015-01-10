@@ -23,6 +23,9 @@ public class DeviceRegistered extends Activity {
 
         toolbar.setTitle(getString(R.string.registered_device_headline));
         toolbar.setTitleTextAppearance(this, R.style.Theme_BoopSetUpTheme_Title);
+        
+        // set the settings
+        settings = this.getSharedPreferences("Boop", MODE_PRIVATE);
 
         // once device registered, we never want to show the start screen again - set flag
         settings.edit().putBoolean("firstRun", false).apply();
