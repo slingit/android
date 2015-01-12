@@ -8,8 +8,10 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
-    <permission android:name="me.slingit.slingapp.permission.C2D_MESSAGE"
+    <permission
+        android:name="me.slingit.slingapp.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="me.slingit.slingapp.permission.C2D_MESSAGE" />
 
     <application
@@ -21,12 +23,15 @@
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="me.slingit.slingapp" />
             </intent-filter>
         </receiver>
+
         <service android:name=".GcmIntentService" />
+
         <activity
-            android:name="me.slingit.slingapp.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.BoopSetUpThemeTranslucent" >
@@ -37,25 +42,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="me.slingit.slingapp.SetupFirstDevice"
+            android:name=".SetupFirstDevice"
             android:label="@string/title_activity_setup_first_device"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.BoopSetUpTheme" >
         </activity>
         <activity
-            android:name="me.slingit.slingapp.SetupExistingGroup"
+            android:name=".SetupExistingGroup"
             android:label="@string/title_activity_setup_existing_group"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.BoopSetUpTheme" >
         </activity>
         <activity
-            android:name="me.slingit.slingapp.HandleQRScan"
+            android:name=".HandleQRScan"
             android:label="@string/title_activity_setup_existing_group"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.BoopSetUpTheme" >
         </activity>
         <activity
-            android:name="me.slingit.slingapp.DeviceRegistered"
+            android:name=".DeviceRegistered"
             android:label="@string/title_activity_device_registered"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.BoopSetUpTheme" >
@@ -63,7 +68,22 @@
         <activity
             android:name=".SlingAuthenticatedMainView"
             android:label="@string/title_activity_boop_main_app"
-            android:theme="@style/Theme.BoopMainTheme">
+            android:theme="@style/Theme.BoopMainTheme" >
+        </activity>
+        <activity
+            android:name=".ShareActivity"
+            android:label="@string/title_activity_share"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="message/*" />
+                <data android:mimeType="multipart/*" />
+                <data android:mimeType="text/*" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
         </activity>
     </application>
 

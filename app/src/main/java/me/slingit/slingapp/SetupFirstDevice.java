@@ -115,6 +115,7 @@ public class SetupFirstDevice extends Activity {
     public void noCamera(View v) {
         LayoutInflater layoutInflater  = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.activity_setup_first_device_nocamera, null);
+        // TODO: get words from service.
         // launch our XKCD-tastic backup solution
         noCameraWindow = new PopupWindow(popupView, 800, 1000, true);
         // set the animation
