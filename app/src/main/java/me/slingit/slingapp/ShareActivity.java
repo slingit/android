@@ -1,7 +1,7 @@
 package me.slingit.slingapp;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,10 +30,14 @@ public class ShareActivity extends ActionBarActivity {
             if(type.startsWith("audio")) {
                 // handle audio
             } else if(type.startsWith("image")) {
-                Log.i(TAG, intent.getDataString());
                 // handle any images coming through
                 ImageView demoImageView = (ImageView) findViewById(R.id.share_intent_demo);
-                demoImageView.setImageURI(intent.getData());
+
+                // get the URI of the image
+                Uri imageUri = (Uri)getIntent().getExtras().get(Intent.EXTRA_STREAM);
+                
+                // simply display it for now, will eventually send
+                demoImageView.setImageURI(imageUri);
             } else if(type.startsWith("message")) {
                 // ?!?
             } else if(type.startsWith("multipart")) {
