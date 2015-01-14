@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class ShareActivity extends ActionBarActivity {
@@ -31,7 +32,7 @@ public class ShareActivity extends ActionBarActivity {
                 // handle audio
             } else if(type.startsWith("image")) {
                 // handle any images coming through
-                ImageView demoImageView = (ImageView) findViewById(R.id.share_intent_demo);
+                ImageView demoImageView = (ImageView) findViewById(R.id.share_intent_image_demo);
 
                 // get the URI of the image
                 Uri imageUri = (Uri)getIntent().getExtras().get(Intent.EXTRA_STREAM);
@@ -43,9 +44,17 @@ public class ShareActivity extends ActionBarActivity {
             } else if(type.startsWith("multipart")) {
                 // handle files
             } else if(type.startsWith("text")) {
-                // handle text intent
+                TextView demoTextView = (TextView) findViewById(R.id.share_intent_text_demo);
+                String text = (String)intent.getExtras().get(Intent.EXTRA_TEXT);
+                
+                // display, as per
+                demoTextView.setText(text);
             } else if(type.startsWith("video")) {
-                // it's a video!
+                // it's a video! Again, just display for now.
+                Uri videoUri = (Uri)getIntent().getExtras().get(Intent.EXTRA_STREAM);
+                Intent videoIntent = new Intent(Intent.ACTION_VIEW);
+                videoIntent.setDataAndType(videoUri, type);
+                startActivity(videoIntent);
             } else {
                 // it's something we don't want to deal with, not called from a Share intent
                 System.exit(0);

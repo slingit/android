@@ -10,7 +10,12 @@
         android:layout_height="wrap_content" />
     
     <ImageView
-        android:id="@+id/share_intent_demo"
+        android:id="@+id/share_intent_image_demo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:id="@+id/share_intent_text_demo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
